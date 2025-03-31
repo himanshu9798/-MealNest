@@ -18,6 +18,10 @@ Fetch API – Retrieves meal data from FreeAPI
 
 📸 Screenshot
 ![image](https://github.com/user-attachments/assets/2a22003a-76cb-4cdf-89a6-c9d3f32f56e9)
+![image](https://github.com/user-attachments/assets/52591971-4dca-41b0-9faa-14e57096671a)
+![image](https://github.com/user-attachments/assets/e6b32a81-e5ee-4e6e-ae6e-30e5c3c89eaa)
+
+
 
 
 💻 Installation & Setup
