@@ -1,23 +1,33 @@
 import React, { useState } from "react";
+import MatrixBackground from "./MatrixBackground";
+import Loader from "../Api/loader/Loader";
 
 function Meals() {
   const [data, setData] = useState([]); // Store meal data
   const [query, setQuery] = useState("");
+  const [isloading, setIsloading] = useState(false);
 
   const fetchMeals = () => {
+    setIsloading(true);
     fetch(
       `https://api.freeapi.app/api/v1/public/meals?page=1&limit=10&query=${query}`
     )
       .then((res) => res.json())
       .then((res) => {
         console.log("API Response:", res);
+        setIsloading(false);
         setData(res.data.data || []);
       })
-      .catch((err) => alert("Error fetching meals: " + err));
+      .catch((err) => {
+        alert("Error fetching meals: " + err);
+        setIsloading(false); // Stop loading when there is an error
+      });
   };
 
   return (
     <div style={styles.container}>
+      <Loader isLoading={isloading} />
+
       <h1 style={styles.title}>🍽️ MealNest</h1>
       <div style={styles.searchContainer}>
         <input
@@ -58,7 +68,7 @@ function Meals() {
           ))
         ) : (
           <p style={styles.noMeals}>
-            No meals found. Try searching for "rice" or "chicken".
+            No meals found. Try searching for "rice" or "cake"...........
           </p>
         )}
       </div>
@@ -151,3 +161,4 @@ const styles = {
 };
 
 export default Meals;
+
